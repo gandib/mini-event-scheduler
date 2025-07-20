@@ -1,7 +1,7 @@
 import httpStatus from 'http-status';
 import AppError from '../../errors/appError';
 import { TEvent } from './Event.interface';
-import { isValidDate, isValidTime } from './Event.utils';
+import { categorizeEvent, isValidDate, isValidTime } from './Event.utils';
 
 // To save Event
 const events: TEvent[] = [];
@@ -32,7 +32,7 @@ const addEvent = async (payload: TEvent): Promise<TEvent> => {
   payload.id = eventId++;
 
   // Add category
-  payload.category = 'Personal';
+  payload.category = categorizeEvent(payload.title, payload.notes);
 
   // Set archived status
   payload.archivedStatus = false;

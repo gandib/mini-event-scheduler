@@ -18,3 +18,22 @@ export function isValidTime(value: string): boolean {
   const timeRegex = /^([01]\d|2[0-3]):([0-5]\d)$/;
   return timeRegex.test(value);
 }
+
+export const categorizeEvent = (
+  title: string,
+  notes?: string,
+): 'Work' | 'Personal' | 'Other' => {
+  const workKeywords = ['meeting', 'project', 'client', 'deadline'];
+  const personalKeywords = ['birthday', 'family', 'anniversary', 'party'];
+  const combinedText = `${title} ${notes || ''}`.toLowerCase();
+
+  if (workKeywords.some((keyword) => combinedText.includes(keyword))) {
+    return 'Work';
+  }
+
+  if (personalKeywords.some((keyword) => combinedText.includes(keyword))) {
+    return 'Personal';
+  }
+
+  return 'Other';
+};
