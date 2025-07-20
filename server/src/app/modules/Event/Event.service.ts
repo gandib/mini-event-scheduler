@@ -44,7 +44,10 @@ const addEvent = async (payload: TEvent): Promise<TEvent> => {
 };
 
 const getAllEvents = async (): Promise<TEvent[]> => {
-  return events;
+  return events.sort(
+    (a, b) =>
+      Date.parse(`${a.date}T${a.time}`) - Date.parse(`${b.date}T${b.time}`),
+  );
 };
 
 const updateEventStatus = async (id: number): Promise<TEvent> => {
