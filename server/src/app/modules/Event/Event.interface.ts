@@ -1,7 +1,8 @@
 export type TEvent = {
   title: string;
-  date: Date;
+  date: string;
   time: string;
   notes?: string;
   category: 'Work' | 'Personal' | 'Other';
+  archivedStatus: boolean;
 };
