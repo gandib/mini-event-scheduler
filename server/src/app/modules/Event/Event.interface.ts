@@ -1,4 +1,5 @@
 export type TEvent = {
+  id: number;
   title: string;
   date: string;
   time: string;

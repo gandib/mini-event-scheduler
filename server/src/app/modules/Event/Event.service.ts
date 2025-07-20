@@ -5,9 +5,9 @@ import { isValidDate, isValidTime } from './Event.utils';
 
 // To save Event
 const events: TEvent[] = [];
-let id: number = events.length + 1;
+let eventId: number = events.length + 1;
 
-const addEvent = async (payload: TEvent) => {
+const addEvent = async (payload: TEvent): Promise<TEvent> => {
   if (!payload.title) {
     throw new AppError(httpStatus.BAD_REQUEST, 'Title can not be empty.');
   }
@@ -28,6 +28,9 @@ const addEvent = async (payload: TEvent) => {
     );
   }
 
+  // Set id
+  payload.id = eventId++;
+
   // Add category
   payload.category = 'Personal';
 
@@ -35,12 +38,16 @@ const addEvent = async (payload: TEvent) => {
   payload.archivedStatus = false;
 
   // Create Event
-  const event = { id: id++, ...payload };
-  events.push(event);
+  events.push(payload);
 
-  return event;
+  return payload;
+};
+
+const getAllEvents = async (): Promise<TEvent[]> => {
+  return events;
 };
 
 export const evnetServices = {
   addEvent,
+  getAllEvents,
 };

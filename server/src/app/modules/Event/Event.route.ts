@@ -5,4 +5,6 @@ const router = express.Router();
 
 router.post('/', eventControllers.addEvent);
 
+router.get('/', eventControllers.getAllEvents);
+
 export const eventRoutes = router;

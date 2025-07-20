@@ -14,6 +14,18 @@ const addEvent = catchAsync(async (req, res) => {
   });
 });
 
+const getAllEvents = catchAsync(async (req, res) => {
+  const result = await evnetServices.getAllEvents();
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Events retrieved successfully',
+    data: result,
+  });
+});
+
 export const eventControllers = {
   addEvent,
+  getAllEvents,
 };
