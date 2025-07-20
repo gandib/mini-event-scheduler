@@ -47,7 +47,19 @@ const getAllEvents = async (): Promise<TEvent[]> => {
   return events;
 };
 
+const updateEventStatus = async (id: number): Promise<TEvent> => {
+  const index = events.findIndex((data) => data.id === id);
+
+  if (index === -1) {
+    throw new AppError(httpStatus.NOT_FOUND, 'Event not found');
+  }
+
+  events[index].archivedStatus = true;
+  return events[index];
+};
+
 export const evnetServices = {
   addEvent,
   getAllEvents,
+  updateEventStatus,
 };

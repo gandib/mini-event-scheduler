@@ -25,7 +25,20 @@ const getAllEvents = catchAsync(async (req, res) => {
   });
 });
 
+const updateEventStatus = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await evnetServices.updateEventStatus(Number(id));
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Event status updated successfully',
+    data: result,
+  });
+});
+
 export const eventControllers = {
   addEvent,
   getAllEvents,
+  updateEventStatus,
 };
