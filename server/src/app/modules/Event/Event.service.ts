@@ -58,8 +58,19 @@ const updateEventStatus = async (id: number): Promise<TEvent> => {
   return events[index];
 };
 
+const deleteEvent = async (id: number) => {
+  const index = events.findIndex((data) => data.id === id);
+
+  if (index === -1) {
+    throw new AppError(httpStatus.NOT_FOUND, 'Event not found');
+  }
+
+  events.splice(index, 1);
+};
+
 export const evnetServices = {
   addEvent,
   getAllEvents,
   updateEventStatus,
+  deleteEvent,
 };

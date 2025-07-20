@@ -9,4 +9,6 @@ router.get('/', eventControllers.getAllEvents);
 
 router.put('/:id', eventControllers.updateEventStatus);
 
+router.delete('/:id', eventControllers.deleteEvent);
+
 export const eventRoutes = router;
