@@ -61,3 +61,11 @@ Create a .env file in the root directory of server projects and add the necessar
     npm install
     npm run dev
     ```
+
+### Client configuration
+
+Create a .env file in the root directory of server projects and add the necessary configuration variables.
+
+```bash
+  VITE_BASE_API_URL=backend_url
+```
