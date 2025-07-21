@@ -9,8 +9,8 @@ function App() {
   const API_URL = import.meta.env.VITE_BASE_API_URL;
   const [allEvents, setAllEvents] = useState<TEvent[]>([]);
   const [events, setEvents] = useState<TEvent[] | []>([]);
-  const [refresh, setRefresh] = useState(false);
-  const [category, setCategory] = useState("");
+  const [refresh, setRefresh] = useState<boolean>(false);
+  const [category, setCategory] = useState<string>("");
 
   useEffect(() => {
     fetch(`${API_URL}/events`)
