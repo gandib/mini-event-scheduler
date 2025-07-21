@@ -31,6 +31,27 @@ const DisplayEvent = ({
     }
   };
 
+  const handleUpdate = async (id: number) => {
+    try {
+      const res = await fetch(`${API_URL}/events/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (res.ok) {
+        toast("Event archive status updated successfully!");
+        setRefresh(!refresh);
+      } else {
+        toast.dismiss();
+        toast.error("Failed to update event status!");
+      }
+    } catch (error) {
+      toast.dismiss();
+      toast.error("Something went wrong");
+      console.error(error);
+    }
+  };
+
   return (
     <div className="card bg-base-100 card-xl shadow-sm">
       <div className="card-body">
@@ -40,7 +61,8 @@ const DisplayEvent = ({
             type="checkbox"
             defaultChecked
             className="toggle"
-            disabled={data?.archivedStatus ? true : false}
+            disabled={data?.archivedStatus}
+            onClick={() => handleUpdate(data.id)}
           />
           {data?.archivedStatus ? "Archived" : "Archive"}
         </label>
