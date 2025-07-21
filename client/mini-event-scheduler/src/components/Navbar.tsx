@@ -1,6 +1,6 @@
 const Navbar = () => {
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-100 shadow-sm fixed top-0 left-0 z-10">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -29,7 +29,21 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Mini Evenet Scheduler</a>
+        <a className="btn btn-ghost text-sm sm:text-xl">
+          Mini Evenet Scheduler
+        </a>
+      </div>
+      <div className="navbar-end">
+        <button
+          onClick={() =>
+            (
+              document.getElementById("add_event_modal") as HTMLDialogElement
+            )?.showModal()
+          }
+          className="btn px-2 sm:px-4"
+        >
+          Add Event
+        </button>
       </div>
     </div>
   );
