@@ -4,11 +4,11 @@ Mini Event Scheduler is a lightweight service for adding and viewing events with
 
 ## Live Client URL
 
-- [Live URL](https://mini-event-scheduler.vercel.app/)
+- [Live URL](https://mini-event-scheduler-two.vercel.app)
 
 ## Live Server URL
 
-- [Live URL](https://mini-event-scheduler-server.vercel.app/)
+- [Live URL](https://mini-event-scheduler-server-henna.vercel.app)
 
 ## API Endpoints
 
