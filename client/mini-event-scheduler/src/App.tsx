@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import type { TEvent } from "./types/event.types";
 import DisplayEvent from "./components/DisplayEvent";
+import Footer from "./components/Footer";
 
 function App() {
   const API_URL = import.meta.env.VITE_BASE_API_URL;
@@ -25,6 +26,8 @@ function App() {
           ))}
         </div>
       </div>
+
+      <Footer />
     </>
   );
 }
