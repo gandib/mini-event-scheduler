@@ -16,7 +16,6 @@ function App() {
       .then((data) => setEvents(data.data));
   }, [API_URL, refresh]);
 
-  console.log(events);
   return (
     <>
       <Navbar />
@@ -24,11 +23,16 @@ function App() {
         <h1 className="text-xl font-semibold py-4">Events</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {events?.map((data) => (
-            <DisplayEvent key={data.id} data={data} />
+            <DisplayEvent
+              key={data.id}
+              data={data}
+              refresh={refresh}
+              setRefresh={setRefresh}
+            />
           ))}
         </div>
       </div>
-      <AddEventModal setRefresh={setRefresh} />
+      <AddEventModal refresh={refresh} setRefresh={setRefresh} />
       <Footer />
     </>
   );

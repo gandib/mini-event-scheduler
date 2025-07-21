@@ -4,8 +4,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import { toast } from "sonner";
 
 const AddEventModal = ({
+  refresh,
   setRefresh,
 }: {
+  refresh: boolean;
   setRefresh: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const modalRef = useRef<HTMLDialogElement | null>(null);
@@ -42,7 +44,7 @@ const AddEventModal = ({
 
       if (res.ok) {
         toast.dismiss();
-        setRefresh(true);
+        setRefresh(!refresh);
         toast.success("Event created successfully");
         closeModal();
       } else {
