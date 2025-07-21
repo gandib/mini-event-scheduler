@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import { useRef, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -21,7 +22,7 @@ const AddEventModal = ({
 
   const onSubmit = async () => {
     const API_URL = import.meta.env.VITE_BASE_API_URL;
-    const formattedDate = startDate.toISOString().split("T")[0];
+    const formattedDate = format(startDate, "yyyy-MM-dd");
     const timeOnly = selectedDateTime.toTimeString().slice(0, 5);
 
     const eventData = {

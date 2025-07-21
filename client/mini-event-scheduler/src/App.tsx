@@ -75,14 +75,18 @@ function App() {
           </form>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {events?.map((data) => (
-            <DisplayEvent
-              key={data.id}
-              data={data}
-              refresh={refresh}
-              setRefresh={setRefresh}
-            />
-          ))}
+          {events.length > 0 ? (
+            events?.map((data) => (
+              <DisplayEvent
+                key={data.id}
+                data={data}
+                refresh={refresh}
+                setRefresh={setRefresh}
+              />
+            ))
+          ) : (
+            <p className="text-xl ">No events to show</p>
+          )}
         </div>
       </div>
       <AddEventModal refresh={refresh} setRefresh={setRefresh} />
